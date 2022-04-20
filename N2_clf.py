@@ -62,26 +62,6 @@ def return_label_vec_N2(arr):
     return ret
 
 
-model_conv = tf.keras.Sequential(
-    [
-        layers.Input(shape=(win_size,1)),
-        layers.Conv1D(filters=64, kernel_size=50, padding="same", strides=2, activation="relu"),
-        layers.MaxPool1D(),
-        layers.Dropout(rate=0.2),
-        layers.Conv1D(filters=32, kernel_size=10, padding="same", strides=2, activation="relu"),
-        layers.MaxPool1D(),
-        #layers.Conv1D(filters=16, kernel_size=7, padding="same", strides=2, activation="relu"),
-        #layers.Conv1D(filters=8, kernel_size=7, padding="same", strides=2, activation="relu"),
-        #layers.Conv1D(filters=4, kernel_size=7, padding="same", strides=2, activation="relu"),
-        layers.Flatten(),
-        layers.Dense(128, activation = 'relu'),
-        layers.Dense(128, activation = 'relu'),
-        layers.Dense(7, activation = 'softmax')
-        ]
-)
-model_conv.compile(optimizer= tf.keras.optimizers.Adam(learning_rate=0.001), loss="categorical_crossentropy", metrics = ['accuracy'])
-#model_conv.summary()
-
 model_conv_N2 = tf.keras.Sequential(
     [
         layers.Input(shape=(win_size,1)),
